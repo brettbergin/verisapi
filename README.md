@@ -1,10 +1,10 @@
-# verisapi
+# VerisAPI
 
 http://127.0.0.1:8000/
 - methods = GET
 - Returns 403 Forbidden
 
-# Registers A User, so can use Basic Authentication
+## Registers A User, so can use Basic Authentication
 http://127.0.0.1:8000/register
 - methods = POST
 - POST parameters = 'username','password'
