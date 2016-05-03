@@ -1,5 +1,6 @@
 # VerisAPI
 
+### Web Root Returns 403 Forbidden
 http://127.0.0.1:8000/
 - methods = GET
 - Returns 403 Forbidden
@@ -24,11 +25,11 @@ http://127.0.0.1:8000/veris/incident
 - methods = POST
 - POST parameters = 'incident'
 
-### Return JSON object of Veris Victim Titles
+### Returns JSON object of Veris Victim Titles
 http://127.0.0.1:8000/veris/victims
 - methods = GET
 
-### Retuns All Victims by industry ID.
+### Return All Victims by industry ID.
 #### E-Commerce is industy ID: 454111
 http://127.0.0.1:8000/veris/industry
 - methods = POST
