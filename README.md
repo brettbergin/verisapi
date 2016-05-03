@@ -6,7 +6,7 @@
 - MongoDB Needs Database 'veris'
 
 #### Installation:
-1. Update veris.app.conf with MongoDB conneciton details.
+1. Update veris.app.conf with MongoDB connection details.
 2. Update veris.app.conf with JSON_PATH variable (VCDB JSON Files)
  - Files Located @: https://github.com/vz-risk/VCDB/tree/master/data/json
 3. python run.py
