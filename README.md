@@ -3,6 +3,7 @@
 ## Flask Web Service API For Veris Community Database
 - Requires MongoDB
 - MongoDB Requires Authentication
+- MongoDB Needs Database 'veris'
 
 #### Installation:
 1. Update veris.app.conf with MongoDB conneciton details.
@@ -10,6 +11,8 @@
  - Files Located @: https://github.com/vz-risk/VCDB/tree/master/data/json
 3. python run.py
 4. Create user via /register
+5. Load Veris JSON via /veris/load
+6. Enjoy :)
 
 #### Example API Call:
 
