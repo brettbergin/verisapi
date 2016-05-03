@@ -1,5 +1,20 @@
 # VerisAPI
 
+## Flask Web Service API For Veris Community Database
+- Requires MongoDB
+- MongoDB Requires Authentication
+
+#### Installation:
+1. Update veris.app.conf with MongoDB conneciton details.
+2, Update veris.app.conf with JSON_PATH variable (VCDB JSON Files)
+ - Files Located @: https://github.com/vz-risk/VCDB/tree/master/data/json
+3. python run.py
+4. Create user via /register
+
+#### Example API Call:
+
+curl -u "username:password" "http://127.0.0.1:8000/veris/victims"
+
 ### Web Root Returns 403 Forbidden.
 http://127.0.0.1:8000/
 - methods = GET
@@ -9,12 +24,10 @@ http://127.0.0.1:8000/
 http://127.0.0.1:8000/register
 - methods = POST
 - POST parameters = 'username','password'
-- Register username/password as POST parameters
 
 ### Loads MongoDB with JSON VCDB files.
 http://127.0.0.1:8000/veris/load
 - methods = GET
-- Files Located Here: https://github.com/vz-risk/VCDB/tree/master/data/json
 
 ### Returns JSON object of all Veris Incident IDs.
 http://127.0.0.1:8000/veris/incidents
