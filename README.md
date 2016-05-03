@@ -6,7 +6,7 @@
 
 #### Installation:
 1. Update veris.app.conf with MongoDB conneciton details.
-2, Update veris.app.conf with JSON_PATH variable (VCDB JSON Files)
+2. Update veris.app.conf with JSON_PATH variable (VCDB JSON Files)
  - Files Located @: https://github.com/vz-risk/VCDB/tree/master/data/json
 3. python run.py
 4. Create user via /register
