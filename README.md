@@ -46,7 +46,7 @@ http://127.0.0.1:8000/veris/victims
 - methods = GET
 
 ### Return All Victims by industry ID.
-#### E-Commerce is industy ID: 454111
+(E-Commerce is industy ID: 454111)
 http://127.0.0.1:8000/veris/industry
 - methods = POST
 - POST parameters = 'industry'
