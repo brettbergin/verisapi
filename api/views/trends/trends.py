@@ -6,11 +6,10 @@ from collections import Counter
 from flask import jsonify
 from flask import request
 
-from verisapi import app
-from verisapi.views.auth.authenticator import login_required
-from verisapi import db
-
-from verisapi.config import log
+from api import app
+from api import db
+from api.views.auth.authenticator import login_required
+from api.config import log
 
 @app.route('/veris/newest', methods=['GET'])
 @login_required

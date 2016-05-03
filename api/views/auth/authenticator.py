@@ -8,13 +8,12 @@ from functools import wraps
 from werkzeug.security import generate_password_hash
 from werkzeug.security import check_password_hash
 
-from verisapi import app
-from verisapi import db
+from api import app
+from api import db
+from api.config import log
 
-from verisapi.config import log
-
-@app.route('/veris/signup', methods=['POST'])
-def signup():
+@app.route('/veris/register', methods=['POST'])
+def register():
     log.debug('[!] %s Request To: %s From: %s' % \
         (request.method, request.path, request.remote_addr))
 
@@ -23,7 +22,7 @@ def signup():
 
             db.users.insert({'username': request.form.get('username'),
             'password': generate_password_hash(request.form.get('password'))})
-            
+
             return jsonify({'Response': 'User Successfully Created.'})
 
         else:

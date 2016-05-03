@@ -5,9 +5,9 @@ import glob
 import subprocess
 import json
 
-from verisapi import db
-from verisapi.config import json_path
-from verisapi.config import log
+from api import db
+from api.config import json_path
+from api.config import log
 
 class SaveVerisData(object):
     def __init__(self):
