@@ -1,11 +1,11 @@
 # VerisAPI
 
-### Web Root Returns 403 Forbidden
+### Web Root Returns 403 Forbidden.
 http://127.0.0.1:8000/
 - methods = GET
 - Returns 403 Forbidden
 
-### Registers A User For Basic Authentication
+### Registers A User For Basic Authentication.
 http://127.0.0.1:8000/register
 - methods = POST
 - POST parameters = 'username','password'
@@ -16,7 +16,7 @@ http://127.0.0.1:8000/veris/load
 - methods = GET
 - Files Located Here: https://github.com/vz-risk/VCDB/tree/master/data/json
 
-### Returns JSON object of all Veris Incident IDs
+### Returns JSON object of all Veris Incident IDs.
 http://127.0.0.1:8000/veris/incidents
 - methods = GET
 
@@ -25,7 +25,7 @@ http://127.0.0.1:8000/veris/incident
 - methods = POST
 - POST parameters = 'incident'
 
-### Returns JSON object of Veris Victim Titles
+### Returns JSON object of Veris Victim Titles.
 http://127.0.0.1:8000/veris/victims
 - methods = GET
 
@@ -35,10 +35,10 @@ http://127.0.0.1:8000/veris/industry
 - methods = POST
 - POST parameters = 'industry'
 
-### Returns Top Ten Recent Veris Record Create Dates
+### Returns Top Ten Recent Veris Record Create Dates.
 http://127.0.0.1:8000/veris/newest
 - methods = GET
 
-### Returns Distinct Threat Actions & count
+### Returns Distinct Threat Actions & count.
 http://127.0.0.1:8000/veris/actions/count
 - methods = GET
