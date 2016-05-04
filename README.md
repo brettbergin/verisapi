@@ -45,7 +45,7 @@ $curl -d "username=alice&password=pwd" "http://127.0.0.1:8000/veris/register"
 http://127.0.0.1:8000/veris/load
 - methods = GET
 
-$curl -u "username:passwor" "http://127.0.0.1:8000/veris/load"
+$curl -u "username:password" "http://127.0.0.1:8000/veris/load"
 
 
 ### -- Incidents --
@@ -60,7 +60,7 @@ http://127.0.0.1:8000/veris/incident
 - methods = POST
 - POST parameters = 'incident'
 
-$curl -u "username:passowrd" -d "incident:XXXX-XXXX-XXXX-XXXX" "http://127.0.0.1:8000/veris/incident"
+$curl -u "username:password" -d "incident:XXXX-XXXX-XXXX-XXXX" "http://127.0.0.1:8000/veris/incident"
 
 
 ### -- Victims & Industry --
@@ -76,7 +76,7 @@ http://127.0.0.1:8000/veris/victim
 - methods = POST
 - POST parameters = 'victim'
 
-$curl -u "username:passowrd" -d "victim:ACME Inc" "http://127.0.0.1:8000/veris/victim"
+$curl -u "username:password" -d "victim:ACME Inc" "http://127.0.0.1:8000/veris/victim"
 
 #### 8. Return All Victims by industry ID.
 ###### E-Commerce is industy ID: 454111
@@ -84,7 +84,7 @@ http://127.0.0.1:8000/veris/industry
 - methods = POST
 - POST parameters = 'industry'
 
-$curl -u "username:passowrd" -d "industry:454111" "http://127.0.0.1:8000/veris/industry"
+$curl -u "username:password" -d "industry:454111" "http://127.0.0.1:8000/veris/industry"
 
 
 ### -- Trends --
