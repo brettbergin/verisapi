@@ -11,9 +11,8 @@ The verisAPI Python(2.7) flask web application is a web service API interface to
 Anyone can register a user on the /veris/register URL.
 ###### Example:
 $curl -d "username=alice&password=pwd" "http://127.0.0.1:8000/veris/register"
-{
-  "Response": "User Successfully Created."
-}
+
+{ "Response" : "User Successfully Created." }
 
 
 ##### Installation:
