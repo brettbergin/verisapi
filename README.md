@@ -19,9 +19,10 @@ $curl -d "username=alice&password=pwd" "http://127.0.0.1:8000/veris/register"
 1. Update veris.app.conf with MongoDB connection details.
 2. Update veris.app.conf with JSON_PATH variable (VCDB JSON Files)
  - Files Located @: https://github.com/vz-risk/VCDB/tree/master/data/json
-3. python run.py
-4. Create user via /register
-5. Load Veris JSON via /veris/load
+3. sudo pip install -r requirements.txt
+4. python run.py
+5. Create user via /veris/register
+6. Load Veris JSON via /veris/load
 
 ###### Example API Call:
 
