@@ -5,7 +5,7 @@
 - MongoDB Requires Authentication
 - MongoDB Needs Database 'veris'
 
-Description:
+#### Description:
 The verisAPI Python(2.7) flask web application is a web service API interface to Veris Community Database.  MongoDB is currently the only supported database.  MongoDB needs to have authentication enabled.  Anyone can register a user on the /veris/register URL.
 
 Example:
