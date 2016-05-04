@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+import re
+import collections
+
 from flask import jsonify
 from flask import request
 
@@ -12,16 +15,45 @@ from api.config import log
 @app.route('/veris/victims', methods=['GET'])
 @login_required
 def victims():
-    vics = {}
     log.debug('[!] %s Request To: %s From: %s' % \
         (request.method, request.path, request.remote_addr))
 
-    victims = db.verisbase.find({}, {'victim.': 1, '_id': 0})
+    vics = {}
+    victims = db.verisbase.find({}, {'victim': 1, '_id': 0})
     for v in victims:
         vic = Victim(v)
-        vics['%s' % vic.industry] = '%s' % vic.victim_id
 
-    return jsonify({'Response' : 'Success', 'Victims': vics})
+        if vic.victim_id is not None:
+            vics['%s' % vic.industry] = '%s' % vic.victim_id
+
+    vic_list = collections.defaultdict(list)
+
+    for ind, vic in vics.iteritems():
+        vic_list['%s' % ind].append('%s' % vic)
+
+    sorted_vics = sorted([d for d in vic_list.values()])
+    return jsonify({'Response' : 'Success', 'Victims': sorted_vics})
+
+@app.route('/veris/victim', methods=['POST'])
+@login_required
+def victim():
+    log.debug('[!] %s Request To: %s From: %s' % \
+        (request.method, request.path, request.remote_addr))
+
+    req = request.form.get('victim')
+    vics = {}
+
+    details = db.verisbase.find({"victim.victim_id":{"$regex":'%s' % req,
+                                    "$options": "-i"}}, {'_id': 0})
+
+    victim = [d for d in details]
+    if len(victim) > 0:
+        return jsonify({'Response':'Success',
+                            'Victim Search Result': victim})
+
+    else:
+        return jsonify({'Response':'Success',
+                    'Search Result': 'No Result Found.'})
 
 @app.route('/veris/industry', methods=['POST'])
 @login_required
@@ -30,7 +62,7 @@ def by_industry():
     log.debug('[!] %s Request To: %s From: %s' % \
         (request.method, request.path, request.remote_addr))
 
-    req_industry = request.form.get('victim')
+    req_industry = request.form.get('industry')
     if req_industry is not None:
         records = db.verisbase.find({}, {'_id': 0})
         for record in records:
