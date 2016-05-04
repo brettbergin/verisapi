@@ -18,48 +18,54 @@
 
 curl -u "username:password" "http://127.0.0.1:8000/veris/victims"
 
-#### Web Root Returns 403 Forbidden.
+#### 1. Web Root Returns 403 Forbidden.
 http://127.0.0.1:8000/
 - methods = GET
 - Returns 403 Forbidden
 
-#### Registers A User For Basic Authentication.
+#### 2. Registers A User For Basic Authentication.
 http://127.0.0.1:8000/register
 - methods = POST
 - POST parameters = 'username','password'
 
-#### Loads MongoDB with JSON VCDB files.
+### Veris JSON MongoDB Data Ingest
+#### 3. Loads MongoDB with JSON VCDB files.
 http://127.0.0.1:8000/veris/load
 - methods = GET
 
-#### Returns JSON object of all Veris Incident IDs.
+### Incidents
+#### 4. Returns JSON object of all Veris Incident IDs.
 http://127.0.0.1:8000/veris/incidents
 - methods = GET
 
-#### Return JSON object of Veris Incident by ID.
+#### 5. Return JSON object of Veris Incident by ID.
 http://127.0.0.1:8000/veris/incident
 - methods = POST
 - POST parameters = 'incident'
 
-#### Returns JSON object of Veris Victim Titles.
+### Victims & Industry
+
+#### 6. Returns JSON object of Veris Victim Titles.
 http://127.0.0.1:8000/veris/victims
 - methods = GET
 
-#### Returns JSON object of Veris Victim Incidents By Search.
+#### 7. Returns JSON object of Veris Victim Incidents By Search.
 http://127.0.0.1:8000/veris/victim
 - methods = POST
 - POST parameters = 'victim'
 
-#### Return All Victims by industry ID.
+#### 8. Return All Victims by industry ID.
 ###### E-Commerce is industy ID: 454111
 http://127.0.0.1:8000/veris/industry
 - methods = POST
 - POST parameters = 'industry'
 
-#### Returns Top Ten Recent Veris Record Create Dates.
+### Trends
+
+#### 9. Returns Top Ten Recent Veris Record Create Dates.
 http://127.0.0.1:8000/veris/newest
 - methods = GET
 
-#### Returns Distinct Threat Actions & count.
+#### 10. Returns Distinct Threat Actions & count.
 http://127.0.0.1:8000/veris/actions/count
 - methods = GET
