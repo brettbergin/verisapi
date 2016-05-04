@@ -42,7 +42,7 @@ http://127.0.0.1:8000/register
 http://127.0.0.1:8000/veris/load
 - methods = GET
 
-### Incidents
+### -- Incidents --
 #### 4. Returns JSON object of all Veris Incident IDs.
 http://127.0.0.1:8000/veris/incidents
 - methods = GET
@@ -52,7 +52,7 @@ http://127.0.0.1:8000/veris/incident
 - methods = POST
 - POST parameters = 'incident'
 
-### Victims & Industry
+### -- Victims & Industry --
 
 #### 6. Returns JSON object of Veris Victim Titles.
 http://127.0.0.1:8000/veris/victims
@@ -69,7 +69,7 @@ http://127.0.0.1:8000/veris/industry
 - methods = POST
 - POST parameters = 'industry'
 
-### Trends
+### -- Trends --
 
 #### 9. Returns Top Ten Recent Veris Record Create Dates.
 http://127.0.0.1:8000/veris/newest
