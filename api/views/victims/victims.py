@@ -12,6 +12,7 @@ from api.views.auth.authenticator import login_required
 from api.models.models import Victim
 from api.config import log
 
+
 @app.route('/veris/victims', methods=['GET'])
 @login_required
 def victims():
@@ -34,6 +35,7 @@ def victims():
     sorted_vics = sorted([d for d in vic_list.values()])
     return jsonify({'Response' : 'Success', 'Victims': sorted_vics})
 
+
 @app.route('/veris/victim', methods=['POST'])
 @login_required
 def victim():
@@ -54,6 +56,7 @@ def victim():
     else:
         return jsonify({'Response':'Success',
                     'Search Result': 'No Result Found.'})
+
 
 @app.route('/veris/industry', methods=['POST'])
 @login_required

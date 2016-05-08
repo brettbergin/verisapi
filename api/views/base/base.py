@@ -8,6 +8,7 @@ from api import app
 from api.views.auth.authenticator import login_required
 from api.config import log
 
+
 @app.route('/', methods=['GET'])
 @login_required
 def index():

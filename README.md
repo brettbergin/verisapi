@@ -100,3 +100,9 @@ http://127.0.0.1:8000/veris/actions/count
 - methods = GET
 
 $curl -u "username:password" "http://127.0.0.1:8000/action/count"
+
+#### 10. Returns Distinct Victims & Geo Location.
+http://127.0.0.1:8000/veris/victims/geo
+- methods = GET
+
+$curl -u "username:password" "http://127.0.0.1:8000/veris/victims/geo"

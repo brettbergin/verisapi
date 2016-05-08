@@ -8,6 +8,7 @@ from api import db
 from api.views.auth.authenticator import login_required
 from api.config import log
 
+
 @app.route('/veris/incidents', methods=['GET'])
 @login_required
 def incidents():
@@ -17,6 +18,7 @@ def incidents():
     incidents = db.verisbase.find({}, {'incident_id': 1, '_id': 0})
     return jsonify({'Response' : 'Success',
                     'Incident Ids': [str(i['incident_id']) for i in incidents]})
+
 
 @app.route('/veris/incident', methods=['POST'])
 @login_required

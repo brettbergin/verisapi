@@ -7,6 +7,7 @@ from api.views.auth.authenticator import login_required
 from api.backends.LoadMongoWithVeris import SaveVerisData
 from api.config import log
 
+
 @app.route('/veris/load', methods=['GET'])
 @login_required
 def load_veris():

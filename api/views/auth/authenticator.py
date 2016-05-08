@@ -12,6 +12,7 @@ from api import app
 from api import db
 from api.config import log
 
+
 @app.route('/veris/register', methods=['POST'])
 def register():
     log.debug('[!] %s Request To: %s From: %s' % \
@@ -29,6 +30,7 @@ def register():
             return jsonify({'Response': 'Password Was Not Supplied.'})
     else:
         return jsonify({'Response': 'Username Was Not Supplied.'})
+
 
 def check_auth(username, password):
     res = db.users.find_one({'username': username})

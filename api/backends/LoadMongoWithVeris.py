@@ -9,6 +9,7 @@ from api import db
 from api.config import json_path
 from api.config import log
 
+
 class SaveVerisData(object):
     def __init__(self):
         pass
