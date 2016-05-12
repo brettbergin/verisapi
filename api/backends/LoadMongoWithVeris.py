@@ -4,10 +4,13 @@ import os
 import glob
 import subprocess
 import json
+from pymongo import Connection
 
 from api import db
 from api.config import json_path
 from api.config import log
+from api.config import veris_db
+from api.config import veris_collection
 
 
 class SaveVerisData(object):
@@ -30,4 +33,9 @@ class SaveVerisData(object):
             print("[+] Processing %d/%d: %s." % \
                 (ctr, len(self._json_files()), json_file))
             db.verisbase.insert(json.loads(self._read_json(json_file)))
+        return
+
+    def clear_collection(self):
+        c = Connection()
+        c['%s' % veris_db].drop_collection('%s' % veris_collection)
         return

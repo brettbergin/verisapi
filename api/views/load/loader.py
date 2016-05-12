@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from flask import jsonify
-
+from flask import request
 from api import app
 from api.views.auth.authenticator import login_required
 from api.backends.LoadMongoWithVeris import SaveVerisData
@@ -15,5 +15,6 @@ def load_veris():
         (request.method, request.path, request.remote_addr))
 
     loader = SaveVerisData()
-    loader.save()
+    loader.clear_collection()
+    #loader.save()
     return jsonify({'LoaderResponse' : 'Successfully Loaded.'})

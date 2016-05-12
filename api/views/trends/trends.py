@@ -10,6 +10,8 @@ from api import app
 from api import db
 from api.views.auth.authenticator import login_required
 from api.config import log
+from api.models.models import Victim
+from api.models.models import Action
 
 import states
 
@@ -48,6 +50,26 @@ def action_count():
                         'Actions By Count': Counter(actions)})
 
 
+@app.route('/veris/actions/types', methods=['GET'])
+@login_required
+def types_actions():
+    log.debug('[!] %s Request To: %s From: %s' % \
+        (request.method, request.path, request.remote_addr))
+
+    query = db.verisbase.find({}, {'action': 1, '_id': 0})
+    all_actions = [Action(action) for action in query]
+
+    actions = {}
+    for action in all_actions:
+
+        if actions.has_key(action.type):
+            actions[action.type].append({ 'vector' : action.vector, 'variety' : action.variety })
+        else:
+            actions[action.type] = [{ 'vector' : action.vector, 'variety' : action.variety }]
+
+    return jsonify({ 'Response':'Success', 'Results': actions })
+
+
 @app.route('/veris/victims/geo', methods=['GET'])
 @login_required
 def victims_count():
@@ -55,21 +77,19 @@ def victims_count():
         (request.method, request.path, request.remote_addr))
 
     query = db.verisbase.find({}, {'victim': 1, '_id': 0})
-
-    all_victims = [res['victim'] for res in query \
-                    if res['victim'].get('victim_id') is not None]
+    victims = [Victim(res) for res in query]
 
     results = {}
+    for vic in victims:
+        if vic.country and vic.state is not None:
+            _state = states.states.get('%s' % vic.state)
+            _location = '%s, %s' % (_state, vic.country)
 
-    for victim in all_victims:
-        vic = victim['victim_id']
-        country, state = victim.get('country'), victim.get('state')
-
-        if country and state is not None:
-            state = states.states.get('%s' % state)
-            results['%s' % vic] = "%s, %s" % (state, country[0])
+            if results.has_key(_location):
+                results[_location].append('%s' % vic.victim_id)
+            else:
+                results[_location] = ['%s' % vic.victim_id]
 
         else:
-            results['%s' % vic] = "country: %s" % country[0]
-
+            results['country: %s' % vic.country] = ['%s' % vic.victim_id]
     return jsonify({ 'Response' : 'Success', 'Results' : results })

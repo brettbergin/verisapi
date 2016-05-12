@@ -80,11 +80,11 @@ $curl -u "username:password" -d "victim:ACME Inc" "http://127.0.0.1:8000/veris/v
 
 #### 8. Return All Victims by industry ID.
 ###### E-Commerce is industy ID: 454111
-http://127.0.0.1:8000/veris/industry
+http://127.0.0.1:8000/veris/incident/industy
 - methods = POST
 - POST parameters = 'industry'
 
-$curl -u "username:password" -d "industry:454111" "http://127.0.0.1:8000/veris/industry"
+$curl -u "username:password" -d "industry:454112" "http://127.0.0.1:8000/veris/incident/industry"
 
 
 ### -- Trends --
@@ -99,9 +99,15 @@ $curl -u "username:password" "http://127.0.0.1:8000/veris/newest"
 http://127.0.0.1:8000/veris/actions/count
 - methods = GET
 
-$curl -u "username:password" "http://127.0.0.1:8000/action/count"
+$curl -u "username:password" "http://127.0.0.1:8000/veris/action/count"
 
-#### 11. Returns Distinct Victims & Geo Location.
+#### 10. Returns Distinct Threat Actions & count.
+http://127.0.0.1:8000/veris/actions/types
+- methods = GET
+
+$curl -u "username:password" "http://127.0.0.1:8000/veris/action/types"
+
+#### 11. Returns Distinct Victims By Geo Location.
 http://127.0.0.1:8000/veris/victims/geo
 - methods = GET
 
