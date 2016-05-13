@@ -7,7 +7,7 @@ The verisAPI Python(2.7) flask web application is a web service API interface to
 
 ## Getting Started
 
-##### Install MongoDB via homebrew
+#### Install MongoDB via homebrew
 Install homebrew
 ```
 install homebrew @ http://brew.sh/
@@ -71,7 +71,7 @@ db.createUser(
 )
 ```
 
-#### VERISAPI Installation:
+### VERISAPI Installation:
 1. Update veris.app.conf with MongoDB connection details.
 2. Update veris.app.conf with JSON_PATH variable (VCDB JSON Files)
  - Files Located @: https://github.com/vz-risk/VCDB/tree/master/data/json
@@ -92,7 +92,7 @@ Example VerisAPI Call:
 curl -u "username:password" "http://127.0.0.1:8000/veris/victims"
 ```
 
-#### -- Veris API Endpoints --
+## -- Veris API Endpoints --
 
 - Web Root Returns 403 Forbidden.
 
