@@ -134,7 +134,7 @@ http://127.0.0.1:8000/veris/incident
 - methods = POST
 - POST parameters = 'incident'
 ```
-$curl -u "username:password" -d "incident:XXXX-XXXX-XXXX-XXXX" "http://127.0.0.1:8000/veris/incident"
+$curl -u "username:password" -X "POST" -d "incident=XXXX-XXXX-XXXX-XXXX" "http://127.0.0.1:8000/veris/incident"
 ```
 
 **Returns JSON object of Veris Victim Titles.**
@@ -151,7 +151,7 @@ http://127.0.0.1:8000/veris/victim
 - methods = POST
 - POST parameters = 'victim'
 ```
-$curl -u "username:password" -d "victim:ACME Inc" "http://127.0.0.1:8000/veris/victim"
+$curl -u "username:password" -X "POST" -d "victim=ACME Inc" "http://127.0.0.1:8000/veris/victim"
 ```
 
 **Return All Victims by industry ID.**
@@ -161,7 +161,7 @@ http://127.0.0.1:8000/veris/incident/industy
 - methods = POST
 - POST parameters = 'industry'
 ```
-$curl -u "username:password" -d "industry:454112" "http://127.0.0.1:8000/veris/incident/industry"
+$curl -u "username:password" -X "POST" -d "industry=454112" "http://127.0.0.1:8000/veris/incident/industry"
 ```
 
 **Returns Top Ten Recent Veris Record Create Dates.**
