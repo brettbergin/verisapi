@@ -43,19 +43,23 @@ def victim():
         (request.method, request.path, request.remote_addr))
 
     req = request.form.get('victim')
-    vics = {}
+    if req is not None:
+        vics = {}
 
-    details = db.verisbase.find({"victim.victim_id":{"$regex":'%s' % req,
-                                    "$options": "-i"}}, {'_id': 0})
+        details = db.verisbase.find({"victim.victim_id":{"$regex":'%s' % req,
+                                        "$options": "-i"}}, {'_id': 0})
 
-    victim = [d for d in details]
-    if len(victim) > 0:
-        return jsonify({'Response':'Success',
-                            'Victim Search Result': victim})
+        victim = [d for d in details]
+        if len(victim) > 0:
+            return jsonify({'Response':'Success',
+                                'Victim Search Result': victim})
 
+        else:
+            return jsonify({'Response':'Success',
+                        'Search Result': 'No Result Found.'})
     else:
-        return jsonify({'Response':'Success',
-                    'Search Result': 'No Result Found.'})
+        return jsonify({'Response':'Error',
+                        'Message':'Missing {victim} parameter. Not found.'})        
 
 
 @app.route('/veris/industry', methods=['POST'])
@@ -79,4 +83,4 @@ def by_industry():
                        'Results' : vics})
     else:
         return jsonify({'Response':'Error',
-                        'Message':'Missing "victim" parameter. Not found.'})
+                        'Message':'Missing {industry} parameter. Not found.'})
