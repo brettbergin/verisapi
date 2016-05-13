@@ -92,13 +92,13 @@ Example VerisAPI Call:
 curl -u "username:password" "http://127.0.0.1:8000/veris/victims"
 ```
 
-## -- Veris API Endpoints --
+## Veris API Endpoints
 
 - Web Root Returns 403 Forbidden.
 
 http://127.0.0.1:8000/
-- methods = GET
-- Returns 403 Forbidden
+* methods = GET
+* Returns 403 Forbidden
 
 - Registers A User For VerisAPI Authentication.
 
