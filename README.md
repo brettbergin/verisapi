@@ -5,7 +5,7 @@
 #### Description:
 The verisAPI Python(2.7) flask web application is a web service API interface to the Veris Community Database.  MongoDB is currently the only supported database for this web application.  MongoDB also must have user authentication enabled.  
 
-##### Mongo DB via homebrew
+##### Install MongoDB via homebrew
 Install homebrew
 ```
 install homebrew @ http://brew.sh/
@@ -78,7 +78,7 @@ db.createUser(
 5. Create user via /veris/register
 6. Load Veris JSON via /veris/load
 
-### Veris API Setup
+#### Veris API Setup
 Create a VerisAPI user
 ```
 $curl -d "username=alice&password=pwd" "http://127.0.0.1:8000/veris/register"
@@ -89,7 +89,8 @@ Example VerisAPI Call:
 ```
 curl -u "username:password" "http://127.0.0.1:8000/veris/victims"
 ```
-### -- Veris API Endpoints
+
+#### -- Veris API Endpoints
 
 1. Web Root Returns 403 Forbidden.
 
