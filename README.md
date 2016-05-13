@@ -185,7 +185,7 @@ $curl -u "username:password" "http://127.0.0.1:8000/veris/actions/count"
 http://127.0.0.1:8000/veris/actions/types
 - methods = GET
 ```
-$curl -u "username:password" "http://127.0.0.1:8000/veris/action/types"
+$curl -u "username:password" "http://127.0.0.1:8000/veris/actions/types"
 ```
 
 **Returns Distinct Victims By Geo Location.**
