@@ -1,30 +1,30 @@
 # VerisAPI
 
 ## Flask Web Service API For Veris Community Database
-- Requires MongoDB
-- MongoDB Requires Authentication
-- MongoDB Needs Database 'veris'
 
 #### Description:
 The verisAPI Python(2.7) flask web application is a web service API interface to the Veris Community Database.  MongoDB is currently the only supported database for this web application.  MongoDB also must have user authentication enabled.  
 
-##### Mongo DB Installation OSX
-######## Recommended to install using homebrew
+##### Mongo DB via homebrew
+Install homebrew
 ```
 install homebrew @ http://brew.sh/
 ```
+Update homebrew
 ```
 brew update
 ```
+Install mongodb
 ```
 brew install mongodb
 ```
+Make Mongo Data Dir
 ```
 mkdir -p /path/to/mongo/data/dir
 ```
+Point Mongo To The Created data/dir
 ```
-edit mongod.conf
- - change dbPath to created data/dir:
+edit mongod.conf:
 
 systemLog:
   destination: file
@@ -38,21 +38,38 @@ net:
 security:
   authorization: enabled
 ```
+Test Mongo Installation
+```
+mongo
+exit
+```
 
-##### Create Mongo User Database
-- mongo --shell use redirect
+#### Create Required Mongo Database & Collections
+```
+mongo
+use veris
+db.createCollection("users")
+db.createCollection("verisbase")
+exit
+```
 
+Add Application User
+```
+mongo
+use veris
+db.createUser(
+   {
+     user: "appuser",
+     pwd: "apppassword",
+     roles:
+       [
+         { role: "readWrite", db: "veris" },
+       ]
+   }
+)
+```
 
-### Add Mongo Authentication
-
-Anyone can register a user on the /veris/register URL.
-###### Example:
-$curl -d "username=alice&password=pwd" "http://127.0.0.1:8000/veris/register"
-
-{ "Response" : "User Successfully Created." }
-
-
-##### VERISAPI Installation:
+#### VERISAPI Installation:
 1. Update veris.app.conf with MongoDB connection details.
 2. Update veris.app.conf with JSON_PATH variable (VCDB JSON Files)
  - Files Located @: https://github.com/vz-risk/VCDB/tree/master/data/json
@@ -61,91 +78,113 @@ $curl -d "username=alice&password=pwd" "http://127.0.0.1:8000/veris/register"
 5. Create user via /veris/register
 6. Load Veris JSON via /veris/load
 
-###### Example API Call:
+### Veris API Setup
+Create a VerisAPI user
+```
+$curl -d "username=alice&password=pwd" "http://127.0.0.1:8000/veris/register"
+{ "Response" : "User Successfully Created." }
+```
 
+Example VerisAPI Call:
+```
 curl -u "username:password" "http://127.0.0.1:8000/veris/victims"
+```
+### -- Veris API Endpoints
 
-#### 1. Web Root Returns 403 Forbidden.
+1. Web Root Returns 403 Forbidden.
+
 http://127.0.0.1:8000/
 - methods = GET
 - Returns 403 Forbidden
 
-#### 2. Registers A User For Basic Authentication.
+2. Registers A User For VerisAPI Authentication.
+
 http://127.0.0.1:8000/veris/register
 - methods = POST
 - POST parameters = 'username','password'
-
+```
 $curl -d "username=alice&password=pwd" "http://127.0.0.1:8000/veris/register"
+```
 
-### -- Veris JSON MongoDB Data Ingest --
-#### 3. Loads MongoDB with JSON VCDB files.
+3. Loads MongoDB with JSON VCDB files.
+
 http://127.0.0.1:8000/veris/load
 - methods = GET
-
+```
 $curl -u "username:password" "http://127.0.0.1:8000/veris/load"
+```
 
+4. Returns JSON object of all Veris Incident IDs.
 
-### -- Incidents --
-#### 4. Returns JSON object of all Veris Incident IDs.
 http://127.0.0.1:8000/veris/incidents
 - methods = GET
-
+```
 $curl -u "username:password" "http://127.0.0.1:8000/veris/incidents"
+```
 
-#### 5. Return JSON object of Veris Incident by ID.
+5. Return JSON object of Veris Incident by ID.
+
 http://127.0.0.1:8000/veris/incident
 - methods = POST
 - POST parameters = 'incident'
-
+```
 $curl -u "username:password" -d "incident:XXXX-XXXX-XXXX-XXXX" "http://127.0.0.1:8000/veris/incident"
+```
 
+6. Returns JSON object of Veris Victim Titles.
 
-### -- Victims & Industry --
-
-#### 6. Returns JSON object of Veris Victim Titles.
 http://127.0.0.1:8000/veris/victims
 - methods = GET
-
+```
 $curl -u "username:password" "http://127.0.0.1:8000/veris/victims"
+```
+7. Returns JSON object of Veris Victim Incidents By Search.
 
-#### 7. Returns JSON object of Veris Victim Incidents By Search.
 http://127.0.0.1:8000/veris/victim
 - methods = POST
 - POST parameters = 'victim'
-
+```
 $curl -u "username:password" -d "victim:ACME Inc" "http://127.0.0.1:8000/veris/victim"
+```
 
-#### 8. Return All Victims by industry ID.
-###### E-Commerce is industy ID: 454111
+8. Return All Victims by industry ID.
+
+E-Commerce is industy ID: 454112
 http://127.0.0.1:8000/veris/incident/industy
 - methods = POST
 - POST parameters = 'industry'
-
+```
 $curl -u "username:password" -d "industry:454112" "http://127.0.0.1:8000/veris/incident/industry"
+```
 
+9. Returns Top Ten Recent Veris Record Create Dates.
 
-### -- Trends --
-
-#### 9. Returns Top Ten Recent Veris Record Create Dates.
 http://127.0.0.1:8000/veris/newest
 - methods = GET
-
+```
 $curl -u "username:password" "http://127.0.0.1:8000/veris/newest"
+```
 
-#### 10. Returns Distinct Threat Actions & count.
+10. Returns Distinct Threat Actions & count.
+
 http://127.0.0.1:8000/veris/actions/count
 - methods = GET
-
+```
 $curl -u "username:password" "http://127.0.0.1:8000/veris/action/count"
+```
 
-#### 10. Returns Distinct Threat Actions & count.
+11. Returns Distinct Threat Actions & count.
+
 http://127.0.0.1:8000/veris/actions/types
 - methods = GET
-
+```
 $curl -u "username:password" "http://127.0.0.1:8000/veris/action/types"
+```
 
-#### 11. Returns Distinct Victims By Geo Location.
+11. Returns Distinct Victims By Geo Location.
+
 http://127.0.0.1:8000/veris/victims/geo
 - methods = GET
-
+```
 $curl -u "username:password" "http://127.0.0.1:8000/veris/victims/geo"
+```
