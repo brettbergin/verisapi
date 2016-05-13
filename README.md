@@ -69,6 +69,7 @@ db.createUser(
        ]
    }
 )
+exit
 ```
 
 ### VERISAPI Installation:
@@ -83,7 +84,7 @@ db.createUser(
 #### Veris API Setup
 Create a VerisAPI user
 ```
-$curl -d "username=alice&password=pwd" "http://127.0.0.1:8000/veris/register"
+$curl -X "POST" -d "username=alice&password=pwd" "http://127.0.0.1:8000/veris/register"
 { "Response" : "User Successfully Created." }
 ```
 
@@ -109,7 +110,7 @@ http://127.0.0.1:8000/veris/register
 - methods = POST
 - POST parameters = 'username','password'
 ```
-$curl -d "username=alice&password=pwd" "http://127.0.0.1:8000/veris/register"
+$curl -X "POST" -d "username=alice&password=pwd" "http://127.0.0.1:8000/veris/register"
 ```
 
 **Loads MongoDB with JSON VCDB files.**
