@@ -5,6 +5,8 @@
 #### Description:
 The verisAPI Python(2.7) flask web application is a web service API interface to the Veris Community Database.  MongoDB is currently the only supported database for this web application.  MongoDB also must have user authentication enabled.  
 
+## Getting Started
+
 ##### Install MongoDB via homebrew
 Install homebrew
 ```
