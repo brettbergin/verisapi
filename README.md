@@ -1,11 +1,10 @@
 # VerisAPI
 
 ## Flask Web Service API For Veris Community Database
-'''
 - Requires MongoDB
 - MongoDB Requires Authentication
 - MongoDB Needs Database 'veris'
-'''
+
 #### Description:
 The verisAPI Python(2.7) flask web application is a web service API interface to the Veris Community Database.  MongoDB is currently the only supported database for this web application.  MongoDB also must have user authentication enabled.  
 
@@ -15,18 +14,23 @@ The verisAPI Python(2.7) flask web application is a web service API interface to
 - brew update
 - brew install mongodb
 - mkdir -p /path/to/mongo/data/dir
-- edit mongod.conf
-  - systemLog:
-  -  destination: file
-  -  path: /Users/lethal/github/veris/log/mongo.log
-  -  logAppend: true
-  - storage:
-  -  dbPath: /Users/lethal/github/veris/mongodatastore
-  - net:
+  - change dbPath to created data/dir
+
+'''
+edit mongod.conf
+
+systemLog:
+  destination: file
+  path: /Users/lethal/github/veris/log/mongo.log
+  logAppend: true
+storage:
+  dbPath: /Users/lethal/github/veris/mongodatastore
+net:
   bindIp: 127.0.0.1
   port: 27017
 security:
   authorization: enabled
+'''
 
 ##### Create Mongo User Database
 - mongo --shell use redirect
