@@ -1,12 +1,38 @@
 # VerisAPI
 
 ## Flask Web Service API For Veris Community Database
+'''
 - Requires MongoDB
 - MongoDB Requires Authentication
 - MongoDB Needs Database 'veris'
-
+'''
 #### Description:
 The verisAPI Python(2.7) flask web application is a web service API interface to the Veris Community Database.  MongoDB is currently the only supported database for this web application.  MongoDB also must have user authentication enabled.  
+
+##### Mongo DB Installation OSX
+######## Recommended to install using homebrew
+- install homebrew @ http://brew.sh/
+- brew update
+- brew install mongodb
+- mkdir -p /path/to/mongo/data/dir
+- edit mongod.conf
+  - systemLog:
+  -  destination: file
+  -  path: /Users/lethal/github/veris/log/mongo.log
+  -  logAppend: true
+  - storage:
+  -  dbPath: /Users/lethal/github/veris/mongodatastore
+  - net:
+  bindIp: 127.0.0.1
+  port: 27017
+security:
+  authorization: enabled
+
+##### Create Mongo User Database
+- mongo --shell use redirect
+
+
+### Add Mongo Authentication
 
 Anyone can register a user on the /veris/register URL.
 ###### Example:
@@ -15,7 +41,7 @@ $curl -d "username=alice&password=pwd" "http://127.0.0.1:8000/veris/register"
 { "Response" : "User Successfully Created." }
 
 
-##### Installation:
+##### VERISAPI Installation:
 1. Update veris.app.conf with MongoDB connection details.
 2. Update veris.app.conf with JSON_PATH variable (VCDB JSON Files)
  - Files Located @: https://github.com/vz-risk/VCDB/tree/master/data/json
@@ -34,7 +60,7 @@ http://127.0.0.1:8000/
 - Returns 403 Forbidden
 
 #### 2. Registers A User For Basic Authentication.
-http://127.0.0.1:8000/register
+http://127.0.0.1:8000/veris/register
 - methods = POST
 - POST parameters = 'username','password'
 
