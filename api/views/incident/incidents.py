@@ -35,7 +35,7 @@ def by_incident():
                         'Results' : [i for i in incidents]})
     else:
         return jsonify({'Response':'Error',
-                        'Message':'Missing "incident" parameter. Not found.'})
+                        'Message':'Missing {incident} parameter. Not found'})
 
 
 @app.route('/veris/incident/industry', methods=['POST'])

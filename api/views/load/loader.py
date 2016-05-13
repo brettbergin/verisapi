@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+
 from flask import jsonify
 from flask import request
 from api import app
@@ -16,5 +17,5 @@ def load_veris():
 
     loader = SaveVerisData()
     loader.clear_collection()
-    #loader.save()
+    loader.save()
     return jsonify({'LoaderResponse' : 'Successfully Loaded.'})

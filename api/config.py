@@ -18,11 +18,19 @@ def SectionMap(section):
     return configs
 
 Config = ConfigParser.ConfigParser()
-Config.read("%s/veris.app.conf" % os.path.abspath('.'))
+base_api_path = os.path.abspath(os.path.join(os.path.dirname(__file__),
+                                    os.path.pardir))
+
+Config.read("%s/veris.app.conf" % base_api_path)
+
+# Log Config
+log_path = SectionMap('log')['log_path']
+log_file = SectionMap('log')['log_file']
 
 log = logging.getLogger(__name__)
 
-handler = logging.FileHandler('%s/log/veris.log' % os.path.abspath('.'))
+handler = logging.FileHandler('%s/%s/%s' % (base_api_path, log_path, log_file))
+
 formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
 handler.setFormatter(formatter)
 log.setLevel(logging.DEBUG)

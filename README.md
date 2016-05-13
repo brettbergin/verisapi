@@ -155,7 +155,7 @@ $curl -u "username:password" -X "POST" -d "victim=ACME Inc" "http://127.0.0.1:80
 ```
 
 **Return All Victims by industry ID.**
-#####E-Commerce is industy ID: 454112
+#####E-Commerce industy IDs: 454112 & 454111
 
 http://127.0.0.1:8000/veris/incident/industy
 - methods = POST
@@ -177,7 +177,7 @@ $curl -u "username:password" "http://127.0.0.1:8000/veris/newest"
 http://127.0.0.1:8000/veris/actions/count
 - methods = GET
 ```
-$curl -u "username:password" "http://127.0.0.1:8000/veris/action/count"
+$curl -u "username:password" "http://127.0.0.1:8000/veris/actions/count"
 ```
 
 **Returns Distinct Threat Actions & count.**
