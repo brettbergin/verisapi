@@ -94,13 +94,13 @@ curl -u "username:password" "http://127.0.0.1:8000/veris/victims"
 
 ## Veris API Endpoints
 
-- Web Root Returns 403 Forbidden.
+**Web Root Returns 403 Forbidden.**
 
 http://127.0.0.1:8000/
 * methods = GET
 * Returns 403 Forbidden
 
-- Registers A User For VerisAPI Authentication.
+**Registers A User For VerisAPI Authentication.**
 
 http://127.0.0.1:8000/veris/register
 - methods = POST
@@ -109,7 +109,7 @@ http://127.0.0.1:8000/veris/register
 $curl -d "username=alice&password=pwd" "http://127.0.0.1:8000/veris/register"
 ```
 
-- Loads MongoDB with JSON VCDB files.
+**Loads MongoDB with JSON VCDB files.**
 
 http://127.0.0.1:8000/veris/load
 - methods = GET
@@ -117,7 +117,7 @@ http://127.0.0.1:8000/veris/load
 $curl -u "username:password" "http://127.0.0.1:8000/veris/load"
 ```
 
-- Returns JSON object of all Veris Incident IDs.
+**Returns JSON object of all Veris Incident IDs.**
 
 http://127.0.0.1:8000/veris/incidents
 - methods = GET
@@ -125,7 +125,7 @@ http://127.0.0.1:8000/veris/incidents
 $curl -u "username:password" "http://127.0.0.1:8000/veris/incidents"
 ```
 
-- Return JSON object of Veris Incident by ID.
+**Return JSON object of Veris Incident by ID.**
 
 http://127.0.0.1:8000/veris/incident
 - methods = POST
@@ -134,7 +134,7 @@ http://127.0.0.1:8000/veris/incident
 $curl -u "username:password" -d "incident:XXXX-XXXX-XXXX-XXXX" "http://127.0.0.1:8000/veris/incident"
 ```
 
-- Returns JSON object of Veris Victim Titles.
+**Returns JSON object of Veris Victim Titles.**
 
 http://127.0.0.1:8000/veris/victims
 - methods = GET
@@ -142,7 +142,7 @@ http://127.0.0.1:8000/veris/victims
 $curl -u "username:password" "http://127.0.0.1:8000/veris/victims"
 ```
 
-- Returns JSON object of Veris Victim Incidents By Search.
+**Returns JSON object of Veris Victim Incidents By Search.**
 
 http://127.0.0.1:8000/veris/victim
 - methods = POST
@@ -151,9 +151,9 @@ http://127.0.0.1:8000/veris/victim
 $curl -u "username:password" -d "victim:ACME Inc" "http://127.0.0.1:8000/veris/victim"
 ```
 
-- Return All Victims by industry ID.
+**Return All Victims by industry ID.**
+#####E-Commerce is industy ID: 454112
 
-E-Commerce is industy ID: 454112
 http://127.0.0.1:8000/veris/incident/industy
 - methods = POST
 - POST parameters = 'industry'
@@ -161,7 +161,7 @@ http://127.0.0.1:8000/veris/incident/industy
 $curl -u "username:password" -d "industry:454112" "http://127.0.0.1:8000/veris/incident/industry"
 ```
 
-- Returns Top Ten Recent Veris Record Create Dates.
+**Returns Top Ten Recent Veris Record Create Dates.**
 
 http://127.0.0.1:8000/veris/newest
 - methods = GET
@@ -169,7 +169,7 @@ http://127.0.0.1:8000/veris/newest
 $curl -u "username:password" "http://127.0.0.1:8000/veris/newest"
 ```
 
-- Returns Distinct Threat Actions & count.
+**Returns Distinct Threat Actions & count.**
 
 http://127.0.0.1:8000/veris/actions/count
 - methods = GET
@@ -177,7 +177,7 @@ http://127.0.0.1:8000/veris/actions/count
 $curl -u "username:password" "http://127.0.0.1:8000/veris/action/count"
 ```
 
-- Returns Distinct Threat Actions & count.
+**Returns Distinct Threat Actions & count.**
 
 http://127.0.0.1:8000/veris/actions/types
 - methods = GET
@@ -185,7 +185,7 @@ http://127.0.0.1:8000/veris/actions/types
 $curl -u "username:password" "http://127.0.0.1:8000/veris/action/types"
 ```
 
-- Returns Distinct Victims By Geo Location.
+**Returns Distinct Victims By Geo Location.**
 
 http://127.0.0.1:8000/veris/victims/geo
 - methods = GET
