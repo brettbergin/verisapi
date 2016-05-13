@@ -99,6 +99,9 @@ curl -u "username:password" "http://127.0.0.1:8000/veris/victims"
 http://127.0.0.1:8000/
 * methods = GET
 * Returns 403 Forbidden
+```
+$curl -u "username:password" "http://127.0.0.1:8000/"
+```
 
 **Registers A User For VerisAPI Authentication.**
 
