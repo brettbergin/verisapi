@@ -10,27 +10,34 @@ The verisAPI Python(2.7) flask web application is a web service API interface to
 
 ##### Mongo DB Installation OSX
 ######## Recommended to install using homebrew
-- install homebrew @ http://brew.sh/
-- brew update
-- brew install mongodb
-- mkdir -p /path/to/mongo/data/dir
-  - change dbPath to created data/dir
-
-'''
+```
+install homebrew @ http://brew.sh/
+```
+```
+brew update
+```
+```
+brew install mongodb
+```
+```
+mkdir -p /path/to/mongo/data/dir
+```
+```
 edit mongod.conf
+ - change dbPath to created data/dir:
 
 systemLog:
   destination: file
-  path: /Users/lethal/github/veris/log/mongo.log
+  path: /path/to/mongo/log/file.log
   logAppend: true
 storage:
-  dbPath: /Users/lethal/github/veris/mongodatastore
+  dbPath: /path/to/mongo/data/dir
 net:
   bindIp: 127.0.0.1
   port: 27017
 security:
   authorization: enabled
-'''
+```
 
 ##### Create Mongo User Database
 - mongo --shell use redirect
