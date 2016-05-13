@@ -30,7 +30,7 @@ class SaveVerisData(object):
         ctr = 0
         for json_file in self._json_files():
             ctr += 1
-            print("[+] Processing %d/%d: %s." % \
+            log.debug("[+] Processing %d/%d: %s." % \
                 (ctr, len(self._json_files()), json_file))
             db.verisbase.insert(json.loads(self._read_json(json_file)))
         return
