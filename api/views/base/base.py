@@ -1,10 +1,8 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 import urllib
-from flask import request
-from flask import jsonify
-from flask import abort
-from flask import url_for
+from flask import request, jsonify, abort, url_for
 
 from api import app
 from api.views.auth.authenticator import login_required
