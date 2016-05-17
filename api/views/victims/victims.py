@@ -4,8 +4,7 @@
 import re
 import collections
 
-from flask import jsonify
-from flask import request
+from flask import jsonify, request
 
 from api import app, db
 from api.views.auth.authenticator import login_required
