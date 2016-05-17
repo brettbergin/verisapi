@@ -1,15 +1,12 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-from flask import jsonify
-from flask import request
-from flask import Response
+from flask import jsonify, request, Response
 
 from functools import wraps
-from werkzeug.security import generate_password_hash
-from werkzeug.security import check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
-from api import app
-from api import db
+from api import app, db
 from api.config import log
 
 
