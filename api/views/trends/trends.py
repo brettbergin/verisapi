@@ -1,17 +1,15 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 from dateutil import parser
 from collections import Counter
 
-from flask import jsonify
-from flask import request
+from flask import jsonify, request
 
-from api import app
-from api import db
+from api import app, db
 from api.views.auth.authenticator import login_required
 from api.config import log
-from api.models.models import Victim
-from api.models.models import Action
+from api.models.models import Victim, Action
 
 import states
 
