@@ -17,9 +17,9 @@ db.authenticate(config.mongo_user,
                 config.mongo_pass,
                 mechanism=config.mongo_mech)
 
-import views.base.base
-import views.auth.authenticator
-import views.load.loader
-import views.incident.incidents
-import views.victims.victims
-import views.trends.trends
+import views.base
+import views.incident
+import views.auth
+import views.load
+import views.victims
+import views.trends
