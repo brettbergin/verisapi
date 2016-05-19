@@ -7,10 +7,7 @@ import json
 from pymongo import Connection
 
 from api import db
-from api.config import json_path
-from api.config import log
-from api.config import veris_db
-from api.config import veris_collection
+from api.config import json_path, log, veris_db, veris_collection
 
 
 class SaveVerisData(object):
@@ -21,9 +18,8 @@ class SaveVerisData(object):
         return glob.glob1(json_path, '*.json')
 
     def _read_json(self, infile):
-        fp = open("%s" % (json_path + infile), 'r')
-        json_data = fp.read()
-        fp.close()
+        with open('{}'.format(json_path + infile), 'r') as fp:
+            json_data = fp.read()
         return json_data
 
     def save(self):
