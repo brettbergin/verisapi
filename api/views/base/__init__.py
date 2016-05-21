@@ -15,7 +15,7 @@ def index():
     log.debug('[!] %s Request To: %s From: %s' % \
         (request.method, request.path, request.remote_addr))
 
-    return jsonify({'Response': abort(403)})
+    return jsonify({ 'Response': 'Unauthorized' }), 403
 
 
 @app.route('/veris/routes', methods=['GET'])

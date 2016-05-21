@@ -22,4 +22,5 @@ import views.incident
 import views.auth
 import views.load
 import views.victims
-import views.trends
+import views.actions
+import views.asset

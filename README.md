@@ -165,12 +165,12 @@ http://127.0.0.1:8000/veris/incident/industy
 $curl -u "username:password" -X "POST" -d "industry=454112" "http://127.0.0.1:8000/veris/incident/industry"
 ```
 
-**Returns Top Ten Recent Veris Record Create Dates.**
+**Returns Top Ten Recent Veris Incident Create Dates.**
 
-http://127.0.0.1:8000/veris/newest
+http://127.0.0.1:8000/veris/incidents/newest
 - methods = GET
 ```
-$curl -u "username:password" "http://127.0.0.1:8000/veris/newest"
+$curl -u "username:password" "http://127.0.0.1:8000/veris/incidents/newest"
 ```
 
 **Returns Distinct Threat Actions & count.**

@@ -16,17 +16,33 @@ def register():
         (request.method, request.path, request.remote_addr))
 
     if request.form.get('username') is not None:
+
         if request.form.get('password') is not None:
 
-            db.users.insert({'username': request.form.get('username'),
-            'password': generate_password_hash(request.form.get('password'))})
+            res = db.users.find_one({'username': request.form.get('username')})
 
-            return jsonify({'Response': 'User Successfully Created.'})
+            if res is None:
+
+                db.users.insert({'username': request.form.get('username'),
+                'password': generate_password_hash(request.form.get('password'))})
+
+                log.debug('[!] Creating User: %s' % \
+                    request.form.get('username'))
+                return jsonify({'Response': 'User Successfully Created.'}), 200
+
+            else:
+                log.debug('[!] User Exists, Not Creating %s.' % \
+                    request.form.get('username'))
+                return jsonify({'Response': 'Cannot Create User, Exists.'}), 400
 
         else:
-            return jsonify({'Response': 'Password Was Not Supplied.'})
+            log.debug('[!] Password Was Not Supplied For User: %s.' % \
+                request.form.get('username'))
+            return jsonify({'Response': 'Password Was Not Supplied.'}), 400
     else:
-        return jsonify({'Response': 'Username Was Not Supplied.'})
+        log.debug('[!] Username Not Supplied. Received Params: %s' % \
+            str(request.form.keys()))
+        return jsonify({'Response': 'Username Was Not Supplied.'}), 400
 
 
 def check_auth(username, password):
@@ -46,6 +62,8 @@ def login_required(f):
     def decorated(*args, **kwargs):
         auth = request.authorization
         if not auth or not check_auth(auth.username, auth.password):
+            log.debug('[!] User Authentication Failed For User: %s:%s' % \
+                (auth.username, auth.password))
             return authenticate()
         return f(*args, **kwargs)
     return decorated

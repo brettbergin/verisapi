@@ -1,4 +1,4 @@
-states = {
+state_map = {
         'AK': 'Alaska',
         'AL': 'Alabama',
         'AR': 'Arkansas',

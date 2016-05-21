@@ -4,7 +4,7 @@
 from flask import jsonify, request
 from api import app
 from api.views.auth import login_required
-from api.backends.LoadMongoWithVeris import SaveVerisData
+from api.backends import SaveVerisData
 from api.config import log
 
 
@@ -14,7 +14,16 @@ def load_veris():
     log.debug('[!] %s Request To: %s From: %s' % \
         (request.method, request.path, request.remote_addr))
 
-    loader = SaveVerisData()
-    loader.clear_collection()
-    loader.save()
-    return jsonify({'LoaderResponse' : 'Successfully Loaded.'})
+    try:
+        log.debug('[!] Running Veris Data Ingest.')
+
+        loader = SaveVerisData()
+        loader.clear_collection()
+        loader.save()
+
+        log.debug('[!] Ingest Complete.')
+        return jsonify({'LoaderResponse' : 'Successfully Loaded.'}), 200
+
+    except Exception, error:
+        log.error('[-] Error Handling %s. %s' % (request.path, error))
+        return jsonify({ 'Response' : 'Error' }), 500
